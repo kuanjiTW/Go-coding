@@ -4,5 +4,8 @@ import "fmt"
 
 func main() {
 	amount := 10
-	fmt.Println(amount)
+	balance := 95
+	balance = balance - amount
+	fmt.Println(balance)
+
 }
