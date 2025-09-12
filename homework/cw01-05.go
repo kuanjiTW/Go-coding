@@ -8,17 +8,14 @@ package main
 
 import "fmt"
 
-var x = 10
-
 func main() {
+	x := 10
 	x = x + 1
 	fmt.Println(x)
-	x := 6
-	fmt.Println(x)
-	funcA()
-}
-
-func funcA() {
+	{
+		x := 6
+		fmt.Println(x)
+	}
 	x = x * 2
 	fmt.Println(x)
 }
