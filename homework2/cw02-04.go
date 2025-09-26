@@ -5,32 +5,33 @@
   the program should remain the same after the rewrite.
 */
 
-// package main
+package main
 
-// import "fmt"
+import "fmt"
 
-// const (
-//   Cat = iota
-//   Dolphin
-//   Tiger
-//   Starfish
-// )
+const (
+	Cat = iota
+	Dolphin
+	Tiger
+	Starfish
+)
 
-// func typ(ani int) {
-//   switch ani {
-//     case Cat: fmt.Println("Land animal")
-//     case Dolphin: fmt.Println("Sea animal")
-//     case Tiger: fmt.Println("Land animal")
-//     case Starfish: fmt.Println("Sea animal")
-//     default: fmt.Println("Unrecognized animal")
-//   }
-// }
+func typ(ani int) {
+	switch ani {
+	case Cat, Tiger:
+		fmt.Println("Land animal")
+	case Dolphin, Starfish:
+		fmt.Println("Sea animal")
+	default:
+		fmt.Println("Unrecognized animal")
+	}
+}
 
-// func main() {
-//   var Morumotto = 777
-//   typ(Cat)
-//   typ(Dolphin)
-//   typ(Tiger)
-//   typ(Starfish)
-//   typ(Morumotto)
-// }
+func main() {
+	var Morumotto = 777
+	typ(Cat)
+	typ(Dolphin)
+	typ(Tiger)
+	typ(Starfish)
+	typ(Morumotto)
+}

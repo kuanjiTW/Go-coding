@@ -20,7 +20,7 @@ func main() {
 		v1 int
 	)
 	fmt.Println("enter a integer:")
-	fmt.Scan(v1)
+	fmt.Scan(&v1)
 	if v1%3 == 0 && v1%7 != 0 {
 		fmt.Println("multiple of 3")
 	} else if v1%3 != 0 && v1%7 == 0 {

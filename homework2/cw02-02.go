@@ -21,22 +21,28 @@
         is interpreted as `b1 || (b2 && b3)`.
 */
 
-// package main
+package main
 
-// import "fmt"
+import "fmt"
 
-// func isLeapYear(year int) bool {
-//   var is_leap_year bool
-//   // <code begin>
+func isLeapYear(year int) bool {
+	var is_leap_year bool
+	// <code begin>
+	if year%400 == 0 {
+		is_leap_year = true
+	} else if year%4 == 0 && year%100 != 0 {
+		is_leap_year = true
+	} else {
+		is_leap_year = false
+	}
+	// <code end>
+	return is_leap_year
+}
 
-//   // <code end>
-//   return is_leap_year
-// }
-
-// func main() {
-//   fmt.Println("=== Leap Year Tests ===")
-//   fmt.Printf("2000: %v\n", isLeapYear(2000))
-//   fmt.Printf("1900: %v\n", isLeapYear(1900))
-//   fmt.Printf("2024: %v\n", isLeapYear(2024))
-//   fmt.Printf("2023: %v\n", isLeapYear(2023))
-// }
+func main() {
+	fmt.Println("=== Leap Year Tests ===")
+	fmt.Printf("2000: %v\n", isLeapYear(2000))
+	fmt.Printf("1900: %v\n", isLeapYear(1900))
+	fmt.Printf("2024: %v\n", isLeapYear(2024))
+	fmt.Printf("2023: %v\n", isLeapYear(2023))
+}
