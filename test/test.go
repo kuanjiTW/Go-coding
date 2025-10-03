@@ -4,14 +4,11 @@ func main() {
 	xs := []int{7, 3, 1, 9, 6, 2, 8}
 	//find the lagest number
 	largest := xs[0]
+	smallest := xs[0]
 	for _, v := range xs {
 		if v > largest {
 			largest = v
 		}
-	}
-	//find the smallest number
-	smallest := xs[0]
-	for _, v := range xs {
 		if v < smallest {
 			smallest = v
 		}
