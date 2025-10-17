@@ -12,6 +12,6 @@ import "fmt"
 
 func main() {
 	for i := 20; i >= 0; i -= 2 {
-		fmt.Print(i, " ")
+		fmt.Println(i)
 	}
 }
