@@ -18,5 +18,6 @@ func main() {
 		sum += i
 		i++
 	}
+
 	fmt.Println("sum =", sum)
 }
