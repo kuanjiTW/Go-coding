@@ -23,4 +23,5 @@ func main() {
 		}
 	}
 	println("smallest:", xs[0], "largest:", xs[len(xs)-1])
+
 }
