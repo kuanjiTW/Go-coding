@@ -12,6 +12,8 @@ func GetTypeName(v any) string {
 		return "string"
 	case complex128:
 		return "complex128"
+	case bool:
+		return "bool"
 	default:
 		return "unknown"
 	}
