@@ -24,7 +24,7 @@ func (c cat) GetName() string {
 func (c cat) GetAge() int {
 	return c.age
 }
-func (c cat) SetName(name string) {
+func (c *cat) SetName(name string) {
 	c.name = name
 }
 
