@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; }
+        form { border: 1px solid #ccc; padding: 20px; border-radius: 5px; width: 300px; }
+        div { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input { width: 100%; padding: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #0069d9; }
+        .error { color: red; font-size: 0.9em; margin-bottom: 10px; display: none;}
+        .link { text-align: center; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <form id="loginForm">
+        <h2 style="text-align:center">Login</h2>
+        <div id="errorMessage" class="error"></div>
+
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" required>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" required>
+        </div>
+
+        <button type="submit">Login</button>
+        <div class="link"><a href="/register">Need an account? Register</a></div>
+    </form>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            if (response.ok) {
+                // On success, redirect to the profile page
+                window.location.href = "/profile";
+            } else {
+                const result = await response.json();
+                const errorDiv = document.getElementById('errorMessage');
+                errorDiv.textContent = result.error || "Login failed";
+                errorDiv.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

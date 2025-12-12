@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; }
+        .card { border: 1px solid #ccc; padding: 20px; border-radius: 5px; width: 300px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        h2 { margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .info-row { margin: 10px 0; }
+        strong { display: inline-block; width: 80px; }
+    </style>
+</head>
+<body>
+    <div class="card" id="profileCard" style="display:none;">
+        <h2>User Profile</h2>
+        <div class="info-row"><strong>Name:</strong> <span id="name"></span></div>
+        <div class="info-row"><strong>Email:</strong> <span id="email"></span></div>
+        <div class="info-row"><strong>Age:</strong> <span id="age"></span></div>
+        <br>
+        <button onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        // Fetch user data on page load
+        fetch('/me')
+            .then(response => {
+                if (response.status === 401) {
+                    // Not logged in, redirect to login
+                    window.location.href = "/login";
+                    throw new Error("Unauthorized");
+                }
+                return response.json();
+            })
+            .then(data => {
+                const user = data.profile;
+                document.getElementById('name').textContent = user.full_name;
+                document.getElementById('email').textContent = user.email;
+                document.getElementById('age').textContent = user.age;
+                document.getElementById('profileCard').style.display = "block";
+            })
+            .catch(err => console.error(err));
+
+        function logout() {
+            // Clear cookie by setting it to past date
+            document.cookie = "Authorization=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            window.location.href = "/login";
+        }
+    </script>
+</body>
+</html>
